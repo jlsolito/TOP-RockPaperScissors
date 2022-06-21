@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Fundamentals 3</title>
+</head>
+<body>
+    <h1>JavaScript functions</h1>
+
+    <ol>
+        <li>
+            <p id="add7">
+                add7():
+            </p>
+            <input type="number" placeholder="Enter number" id="add-num">
+            <button type="button" onclick="add7()">Add 7</button>
+        </li>
+
+        <li>
+            <p id="mul">
+                multiply(,):
+            </p>
+            <input type="number" placeholder="Enter number" id="mul1">
+            <input type="number" placeholder="Enter number" id="mul2">
+            <button type="button" onclick="multiply()">Multiply</button>
+        </li>
+
+        <li>
+            <p id="text">
+                capitalize():
+            </p>
+            <input type="text" placeholder="Enter any text" id="text1">
+            <button type="button" onclick="capitalize()">Capitalize</button>
+        </li>
+
+        <li>
+            <p id="last">
+                lastLetter();
+            </p>
+            <input type="text" placeholder="Enter any text" id="last1">
+            <button type="button" onclick="lastLetter()">Get last char</button>
+        </li>
+    </ol>
+    
+    <script type="text/javascript">
+        // add number by 7
+        function add7(){
+            const num = document.getElementById('add-num').value;
+            let out = Number(num) + 7;
+            document.getElementById("add7").innerHTML = `add7(${num}): ${out}`;
+        }
+
+        // multiply two numbers
+        function multiply(){
+            const num1 = document.getElementById("mul1").value;
+            const num2 = document.getElementById("mul2").value;
+            document.getElementById("mul").innerHTML = `multiply(${num1}, ${num2}): ${Number(num1) * Number(num2)}`;
+        }
+
+        // make string have capital letter for 1st letter and lowercase for the rest
+        function capitalize(){
+            const text = document.getElementById("text1").value;
+            document.getElementById("text").innerHTML = `capitalize(): ${text.slice(0,1).toUpperCase() + text.slice(1, text.length).toLowerCase()}`;
+        }
+
+        // get last letter only
+        function lastLetter(){
+            const text = document.getElementById("last1").value;
+            document.getElementById("last").innerHTML = `lastLetter(): ${text.slice(-1)}`;
+        }
+    </script>
+    
+</body>
+</html>
