@@ -69,3 +69,43 @@ function win006(){
         console.log(`win006()\n\tFAIL: Unknown outcome: ${win}`);
     }
 }
+
+// test is scoreboard updates
+function scb007(){
+    //console.log(`pRounds = ${pRounds.length}`);
+    //console.log(`cRounds = ${cRounds.length}`);
+    const pRoundsInit = pRounds.length;
+    const cRoundsInit = cRounds.length;
+    //console.log(`pRoundsInit = ${pRoundsInit}`);
+    //console.log(`cRoundsInit = ${cRoundsInit}`);
+    
+    let pSelect = playerPlay();
+    let cSelect = computerPlay();
+    let compare = playRound(pSelect, cSelect);
+    scoreboard(compare);
+    /*
+    console.log(`pRounds = ${pRounds.length}`);
+    console.log(`cRounds = ${cRounds.length}`);
+    console.log(`pRoundsInit = ${pRoundsInit}`);
+    console.log(`cRoundsInit = ${cRoundsInit}`);
+    */
+    if(pRounds.length > pRoundsInit && cRounds.length > cRoundsInit){
+        console.log(`scb007()\n\tPASS: Scoreboard is being updated.\n\t${pRoundsInit} to ${pRounds.length}`)
+    }
+    else {
+        console.log(`scb007()\n\tFAIL: Scoreboard is not being updated.\n\t${cRoundsInit} to ${cRounds.length}`)
+    }
+}
+
+// test if scoreboard finishes game after 5 rounds
+function scb008(){
+    if(pRounds.length == 5){
+        console.log(`scb008()\n\tPASS: Game is done`);
+    }
+    else if(pRounds.length <    5){
+        console.log(`scb008()\n\tTBD: Game in progress...\n\tRound: ${pRounds.length}`);
+    }
+    else {
+        console.log(`scb008()\n\tFAIL: Game is more than 5 rounds!\n\tRound: ${pRounds.length}`);
+    }
+}

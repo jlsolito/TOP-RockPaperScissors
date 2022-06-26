@@ -37,7 +37,6 @@ function getWinner(index) {
 }
 
 function scoreboard(result){
-    
     switch(result){
         case 1:
             pScore++;
@@ -56,23 +55,44 @@ function scoreboard(result){
     }
 }
 
+function clear(){
+    pScore = 0;
+    cScore = 0;
+    round = 1;
+    cRounds.length = 0;
+    pRounds.length = 0;
+}
+
 // game() to play a round and keep score
 function game(){
+    /*
     cp001(); // test if computerPlay returns a number
     cp002(); // test if playerPlay() returns a number
     cp003(); // test if computerPlay() outputs anything that is not rock, paper, or scissors
     cp004(); // test if playerPlay() outputs anything that is not rock, paper, or scissors
     rnd005(); // test if playRound() returns number
     win006(); // test if winner is selected
+    clear();
+    scb007(); // test if scoreboard is being updated
+    */
+   
 
-    let pSelect = playerPlay();
-    let cSelect = computerPlay();
-    let compare = playRound(pSelect, cSelect);
-    scoreboard(compare);
+    if(pRounds.length < 5){
+        let pSelect = playerPlay();
+        let cSelect = computerPlay();
+        let compare = playRound(pSelect, cSelect);
+        scoreboard(compare);
     
-    
-    
-    console.log(`Player chooses ${getHand(pSelect)} and Computer chooses ${getHand(cSelect)}. ${getWinner(compare)}`);
-    console.log(`Score:\n\tPlayer has ${pScore} wins\n\tComputer has ${cScore} wins.`)
-    console.log(`Player: ${pRounds}\nComputer: ${cRounds}`);
+        console.log(`Player chooses ${getHand(pSelect)} and Computer chooses ${getHand(cSelect)}. ${getWinner(compare)}`);
+        console.log(`Score:\n\tPlayer has ${pScore} wins\n\tComputer has ${cScore} wins.`)
+        console.log(`Player: ${pRounds}\nComputer: ${cRounds}`);
+    }
+    else {
+        console.log(pRounds.length);
+        let winGame = winner[0];
+        if(pScore > cScore) winGame = winner[1];
+        else if(cScore > pScore) winGame = winner[2];
+        console.log(`Game set and match!\n\t ${winGame}`)
+    }
+    scb008(); // test if scoreboard finishes game after 5 rounds
 }
